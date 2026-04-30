@@ -1,0 +1,344 @@
+
+        :root{
+            --bg: #0b0b0f;
+            --card: #14141c;
+            --border: #23232d;
+            --text: #f1f1f5;
+
+            --accent: #7c3aed;  
+            --accent2: #22d3ee;  
+            --accent3: #f59e0b;  
+            --accent4: #ec4899;  
+            --muted: #7070a8;
+            --s-bg:#0d0d18;
+        }
+
+        *{
+            box-sizing: border-box; margin: 0; padding: 0;
+        }
+
+        body{
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Syne", sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        main{
+            max-width: 1200px; margin: 0 auto; padding: 60px 24px;
+        }
+
+        .section{
+            margin-bottom: 80px;
+        }
+
+        .section-title{
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .demo-grid{
+            display: grid;
+            gap: 20px;
+        }
+
+        .demo-grid.cols1 {grid-template-columns: 1fr;}
+        .demo-grid.cols2 {grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));}
+        .demo-grid.cols3 {grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));}
+
+        .card{
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 24px 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-title{
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: "Space Mono", monospace;
+
+        }
+
+        .center-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hover-text{
+            font-family: "Space Mono", monospace;
+            font-size: 12px;
+            pointer-events: none;
+        }
+
+        .hide-text-on-hover .hover-text {
+            transition: opacity .25s ease, transform .25s ease;
+        }
+
+        .hide-text-on-hover:hover .hover-text {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+
+
+
+        /* ====================Start CSS Transition=============== */
+
+        .hover-box{
+            width: 80px; height: 80px;
+            background: var(--accent4);
+            border-radius: 8px;
+            transition: transform .4s ease, background .4s ease, border-radius .4s ease;
+            cursor: pointer;
+        }
+
+        .hover-box:hover{
+            transform: rotate(45deg) scale(1.2);
+            background: var(--accent3);
+            border-radius: 50%;
+        }
+
+        .btn-demo{
+            padding: 12px 28px;
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent2);
+            border-radius: 8px;
+            font-family: "Space Mono", monospace;
+            font-size: 12px;
+            cursor: pointer;
+            transition: transform .2s, background .3s, color .3s, box-shadow .3s;
+        }
+
+        .btn-demo:hover{
+            background: var(--accent4);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 77, 109, .5);
+            transform: translateY(-2px);
+        }
+
+        .width-transform{
+            width: 80px; height: 80px;
+            background: var(--accent4);
+            border-radius: 8px;
+            transition-duration: .5s;
+            cursor: pointer;
+
+        }
+
+        .width-transform:hover{
+            width: 200px;
+        }
+
+        .shape-star{
+            width: 80px;
+            height: 80px;
+            background: var(--accent4);
+            border-radius: 8px;
+
+
+            clip-path: polygon(
+                0% 0%, 100% 0%,
+                100% 0%, 100% 100%,
+                100% 100%, 0% 100%,
+                0% 100%, 0% 0%,
+                0% 0%, 100% 0%
+            );
+
+            transition: clip-path 0.6s cubic-bezier(.65,0,.35,1), transform 0.8s ease;
+        }
+
+        .shape-star:hover{
+            transform: scale(1.2) rotate(215deg);
+
+
+            clip-path: polygon(
+                50% 0%, 61% 35%,
+                98% 35%, 68% 57%,
+                79% 91%, 50% 70%,
+                21% 91%, 32% 57%,
+                2% 35%, 39% 35%
+            );
+        }
+
+
+         /* ====================End CSS Transition===============  */
+
+         /* ====================Start @keyframes===============  */
+
+         @keyframes spin{
+            from {transform: rotate(0deg);}
+            to{transform: rotate(360deg);}
+         }
+
+         .spin-box{
+            width: 60px; height: 60px;
+            border:4px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+
+         }
+
+         @keyframes pulse{
+            0%, 100% {
+                transform: scale(1); opacity: 1;
+            }
+            50%{
+                transform: scale(1.3); opacity: 1; background: var(--accent2);
+            }
+         }
+
+         .pulse-dot{
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 1.4s ease-in-out infinite;
+
+         }
+
+         @keyframes bounce{
+            0%, 100%{
+                transform: translateY(0);
+                animation-timing-function: ease-in;
+            }
+            50%{
+                transform: translateY(-20px);
+                animation-timing-function: ease-out;
+            }
+         }
+
+         .bounce-box{
+            width: 50px; height: 50px;
+            background: var(--accent);
+            border-radius: 8px;
+            animation: bounce 1.2s ease infinite;
+         }
+
+         @keyframes fadeIn{
+            from{opacity: 0;}
+            to{opacity: 1;}
+         }
+         .fade-box{
+            width: 120px; height: 50px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border-radius: 8px;
+            animation: fadeIn 2s ease-in-out infinite alternate;
+         }
+
+         /* ====================End @keyframes===============  */
+
+
+         /* ====================Start Timing Functions===============  */
+
+         @keyframes slideRight{
+            from{transform: translateX(-60px);}
+            to{transform: translateX(220px);}
+         }
+         .timing-row{display: flex; flex-direction: column; gap: 16px;}
+         .timing-item{display: flex; align-items: center; gap: 18px;}
+         .timing-label{
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: var(--muted);
+            width: 120px;
+            flex-shrink: 0;
+         }
+         .timing-track{
+            flex: 1;
+            height: 36px;
+            background: var(--s-bg);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+
+         }
+
+         .timing-ball{
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            background-color: var(--accent2);
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            animation: slideRight 2s infinite alternate;
+         }
+
+         .ease{animation-timing-function: ease;}
+         .ease-in{animation-timing-function: ease-in;}
+         .ease-out{animation-timing-function: ease-out;}
+         .ease-in-out{animation-timing-function: ease-in-out;}
+         .linear{animation-timing-function: linear;}
+         .steps-ball{animation-timing-function: steps(6, end); background: var(--accent3);}
+         .cubic-ball{animation-timing-function: cubic-bezier(.68,-0.55,.27,1.55); background: var(--accent4);}
+
+         
+
+
+         /* ====================End Timing Functions===============  */
+
+
+
+         /* ==================== Start CSS Delay===============  */
+
+
+           @keyframes popIn {
+            0%   { transform: scale(0); opacity: 0; }
+            80%  { transform: scale(1.15);}
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .delay-rows{display: flex; flex-direction: column; gap: 20px;}
+        .delay-row { display: flex; gap: 16px; align-items: flex-end; }
+        .delay-track{background: var(--s-bg); border: 1px solid var(--border); padding: 12px; border-radius: 8px;}
+        .delay-circle {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: var(--accent4);
+            animation: popIn 1.5s ease-in-out infinite alternate;
+        }
+
+        .delay-circle:nth-child(1) { animation-delay: 0s; }
+        .delay-circle:nth-child(2) { animation-delay: .15s; background: #8866ff; }
+        .delay-circle:nth-child(3) { animation-delay: .30s; background: var(--accent); }
+        .delay-circle:nth-child(4) { animation-delay: .45s; background: var(--accent3); }
+        .delay-circle:nth-child(5) { animation-delay: .60s; background: var(--accent2); }
+        .delay-circle:nth-child(6) { animation-delay: .75s; background: #59E354; }
+        .delay-circle:nth-child(7) { animation-delay: .90s; background: #F58225; }
+
+
+
+        @keyframes popIn2 {
+            0%   { transform: scale(0); opacity: 0; }
+            80%  { transform: scale(1.15);}
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .delay-row2 { display: flex; gap: 16px; justify-content: flex-end; }
+        .delay-circle2 {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background: var(--accent4);
+            animation: popIn2 3s ease-in-out infinite alternate;
+        }
+
+        .delay-circle2:nth-child(7) { animation-delay: 0s; }
+        .delay-circle2:nth-child(6) { animation-delay: .15s; background: #8866ff; }
+        .delay-circle2:nth-child(5) { animation-delay: .30s; background: var(--accent); }
+        .delay-circle2:nth-child(4) { animation-delay: .45s; background: var(--accent3); }
+        .delay-circle2:nth-child(3) { animation-delay: .60s; background: var(--accent2); }
+        .delay-circle2:nth-child(2) { animation-delay: .75s; background: #59E354; }
+        .delay-circle2:nth-child(1) { animation-delay: .90s; background: #F58225; }
+
+
+
+        /* ==================== End CSS Delay===============  */
+

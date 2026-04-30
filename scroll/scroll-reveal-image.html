@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scroll reveal image</title>
+    <style>
+        body{
+            margin: 0;
+            height: 200vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #262626;
+        }
+        @keyframes reveal{
+            0%{
+                opacity: 0;
+                clip-path: inset(45% 20% 45% 20%);
+            }
+
+            50%{
+                opacity: 1;
+                clip-path: inset(0% 0% 0% 0%);
+            }
+            100%{
+                opacity: 0;
+                clip-path: inset(45% 20% 45% 20%);
+            }
+            
+        }
+
+        .revealing-image{
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+            background-image: url(./assets/images/nsc3.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            animation: reveal linear both;
+            animation-timeline: view();
+            animation-range: entry 0% cover 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="revealing-image">
+
+    </div>
+</body>
+</html>
