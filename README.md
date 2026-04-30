@@ -6,13 +6,6 @@ This project is a hands-on playground for learning and showcasing CSS animation 
 
 ---
 
-## 🚀 Live Preview
-You can open `index.html` directly in your browser.
-
-(Or host it using GitHub Pages)
-
----
-
 ## 📂 What’s Inside
 
 This project includes examples of:
